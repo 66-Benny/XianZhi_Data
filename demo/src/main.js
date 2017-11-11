@@ -5,7 +5,9 @@ import App from './App'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
+import ElementUI from 'element-ui'
 
+import 'element-ui/lib/theme-chalk/index.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
@@ -21,10 +23,21 @@ Vue.component = function (name, definition) {
 Vue.use(VueRouter)
 Vue.use(VueResource)
 Vue.use(BootstrapVue)
+Vue.use(ElementUI)
 
 Vue.component = originalVueComponent
 Vue.config.productionTip = false
 
+	
+const EventBus = new Vue()
+
+Object.defineProperties(Vue.prototype, {
+    $bus: {
+        get: function () {
+            return EventBus
+        }
+    }
+})
 /* eslint-disable no-new */
 // const routes = [{
 //   path: '/first',
@@ -47,5 +60,6 @@ const app = new Vue({
   template: '<App/>',
   components: {
     App
-  }
+  },
+  render: h => h(App)
 })

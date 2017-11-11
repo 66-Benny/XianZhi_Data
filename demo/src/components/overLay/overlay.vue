@@ -10,7 +10,7 @@
                                     <b-col lg="4" md="4" sm="12">
                                         <process-left :curIndex="curIndex"></process-left>
                                     </b-col>
-                                    <b-col lg="8" md="8" sm="12">
+                                    <b-col lg="8" md="8" sm="12" class="right">
                                         <process-right :curIndex="curIndex"></process-right>
                                     </b-col>
                                 </b-row>
@@ -39,7 +39,8 @@
             return {
                 counter: 100,
                 max: 100,
-                curIndex: 0
+                curIndex: 0,
+                curSelectedItem: []
             };
         },
         components: {
@@ -60,5 +61,9 @@
     .xlg .modal-dialog {
         width: 80% !important;
         max-width: 80% !important;
+    }
+    .right{
+        max-height: 200px;
+        overflow-y: scroll;
     }
 </style>
